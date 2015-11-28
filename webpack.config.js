@@ -25,12 +25,15 @@ module.exports = {
         loaders: [{
             test: /\.css$/,
             include: path.resolve(__dirname, 'app'),
-            loader: 'style-loader!css-loader'
+            loaders: ['style','css']
         }, {
             test: /\.js[x]?$/,
             include: path.resolve(__dirname, 'app'),
             exclude: /node_modules/,
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            query: {
+                 presets: ['react', 'es2015']
+            }
         }, ]
     },
     plugins: [
