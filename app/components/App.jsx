@@ -1,6 +1,7 @@
 'use strict';
 import React from 'react';
 import $ from 'jquery';
+import LoginDialog from './LoginDialog.jsx'
 
 require('./App.css');
 const APP_ID = '7hyoc6are05n823dd424ywvf752gem2w96inlkl3yiann6vw';
@@ -13,7 +14,8 @@ export default class App extends React.Component {
         this.state = {
             results: [],
             page: 1,
-            sessionToken: ''
+            sessionToken: '',
+            showLoginDialog: false
         };
     }
 
@@ -57,23 +59,20 @@ export default class App extends React.Component {
      * @return {[type]} [description]
      */
     clickLogin() {
-        let url = 'https://leancloud.cn:443/1.1/login?username={username}&password={password}'
-
-        $.ajax({
-            type: "GET",
-            url: url.replace('{username}', 'admin').replace('{password}', 'jayinton'),
-            headers: {
-                'X-LC-Id': APP_ID,
-                'X-LC-Key': APP_KEY
-            },
-            processData: false,
-            success: function(data) {
-                this.setState({
-                    sessionToken: data.sessionToken
-                })
-
-            }.bind(this)
-        });
+        this.setState({
+            showLoginDialog: true
+        })
+    }
+    /**
+     * 登录成功回调
+     * @param  {[type]} data [description]
+     * @return {[type]}      [description]
+     */
+    loginSuccessCallback(data){
+        this.setState({
+            sessionToken: data.sessionToken,
+            showLoginDialog: false
+        })
     }
     /**
      * 选择
@@ -174,6 +173,8 @@ export default class App extends React.Component {
                         </li>
                     </ul>
                 </nav>
+
+                <LoginDialog show={this.state.showLoginDialog} loginSuccessCallback={this.loginSuccessCallback.bind(this)}/>
             </div>
         );
     }
