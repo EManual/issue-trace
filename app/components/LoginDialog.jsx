@@ -12,13 +12,15 @@ export default class LoginDialog extends React.Component {
         super(props);
         this.state = {
             show: false || this.props.show,
-            loginSuccessCallback: this.props.loginSuccessCallback
+            loginSuccessCallback: this.props.loginSuccessCallback,
+            incorrectPassword: false
         }
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            show: false || nextProps.show
+            show: false || nextProps.show,
+            incorrectPassword: false
         })
     }
 
@@ -50,7 +52,18 @@ export default class LoginDialog extends React.Component {
                     this.props.loginSuccessCallback(data)
                 }
                 this.clickClose();
+                this.setState({
+                    incorrectPassword: false
+                })
 
+            }.bind(this),
+            error: function(err_response){
+                console.log(err_response)
+                if(err_response.status && err_response.responseJSON && err_response.responseJSON.code === 211){
+                    this.setState({
+                        incorrectPassword: true
+                    })
+                }
             }.bind(this)
         });
     }
@@ -70,9 +83,10 @@ export default class LoginDialog extends React.Component {
                           <label for="recipient-name" className="control-label">用户名:</label>
                           <input type="text" className="form-control" ref="inputName" />
                         </div>
-                        <div class="form-group">
-                          <label className="control-label">密码:</label>
-                          <input type="password" className="form-control" ref="inputPassword"/>
+                        <div className={"form-group " + (this.state.incorrectPassword?'has-error has-feedback' : '')}>
+                          <label className="control-label" >密码:</label>
+                          <input type="pawword" className="form-control" ref="inputPassword"/>
+                          <span className="glyphicon glyphicon-remove form-control-feedback"></span>
                         </div>
                       </form>
                   </div>
@@ -80,6 +94,7 @@ export default class LoginDialog extends React.Component {
                     <button type="button" className="btn btn-default" onClick={this.clickClose.bind(this)}>关闭</button>
                     <button type="button" className="btn btn-primary" onClick={this.clickLogin.bind(this)}>确认</button>
                   </div>
+
                 </div>
               </div>
             </div>
