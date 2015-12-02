@@ -2,9 +2,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-//不优雅
-const APP_ID = '7hyoc6are05n823dd424ywvf752gem2w96inlkl3yiann6vw';
-const APP_KEY = 'tgufkdybjtb4gvsbwcatiwd9wx49adxrmf8qkpwunh0h3wx3'
+import config from './config.js'
 
 export default class LoginDialog extends React.Component {
 
@@ -43,8 +41,8 @@ export default class LoginDialog extends React.Component {
             type: "GET",
             url: url.replace('{username}', username).replace('{password}', password),
             headers: {
-                'X-LC-Id': APP_ID,
-                'X-LC-Key': APP_KEY
+                'X-LC-Id': config.APP_ID,
+                'X-LC-Key': config.APP_KEY
             },
             processData: false,
             success: function(data) {
@@ -85,7 +83,7 @@ export default class LoginDialog extends React.Component {
                         </div>
                         <div className={"form-group " + (this.state.incorrectPassword?'has-error has-feedback' : '')}>
                           <label className="control-label" >密码:</label>
-                          <input type="pawword" className="form-control" ref="inputPassword"/>
+                          <input type="password" className="form-control" ref="inputPassword"/>
                           <span className="glyphicon glyphicon-remove form-control-feedback"></span>
                         </div>
                       </form>

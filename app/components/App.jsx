@@ -2,10 +2,9 @@
 import React from 'react';
 import $ from 'jquery';
 import LoginDialog from './LoginDialog.jsx'
+import config from './config.js'
 
 require('./App.css');
-const APP_ID = '7hyoc6are05n823dd424ywvf752gem2w96inlkl3yiann6vw';
-const APP_KEY = 'tgufkdybjtb4gvsbwcatiwd9wx49adxrmf8qkpwunh0h3wx3'
 
 export default class App extends React.Component {
 
@@ -29,8 +28,8 @@ export default class App extends React.Component {
             type: "GET",
             url: url.replace('{skip}', (page-1)*limit).replace('{limit}', limit),
             headers: {
-                'X-LC-Id': APP_ID,
-                'X-LC-Key': APP_KEY
+                'X-LC-Id': config.APP_ID,
+                'X-LC-Key': config.APP_KEY
             },
             processData: false,
             success: function(data) {
