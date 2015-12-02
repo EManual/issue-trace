@@ -1,4 +1,6 @@
-This repo is a boilerplate for React-Babel-Webpack project. You could use it as a base to build your own web app.
+## issue trace
+
+![ScreenShot.png](./artwork/ScreenShot.png)
 
 ## Features
 
@@ -14,8 +16,8 @@ This repo is a boilerplate for React-Babel-Webpack project. You could use it as 
 First, you should clone the repo and install the dependencies.
 
 ```bash
-$ git clone git@github.com:ruanyf/react-babel-webpack-boilerplate.git <yourAppName>
-$ cd <yourAppName>
+$ git clone git@github.com:EManual/issue-trace.git
+$ cd issue-trace
 $ npm install
 ```
 
@@ -31,4 +33,4 @@ From there, you start to develop your own code in the `app` directory. When you 
 
 ## License
 
-MIT
+Apache V2
