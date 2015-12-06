@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "start": "webpack-dev-server --devtool eval --progress --hot --colors --content-base app",
-    "deploy": "NODE_ENV=production webpack -p && cp ./app/index.html ./build/",
+    "deploy": "NODE_ENV=production webpack -p --config webpack.production.config.js && cp ./app/index.html ./build/",
     "validate": "npm ls"
   },
   "dependencies": {

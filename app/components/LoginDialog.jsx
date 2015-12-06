@@ -81,7 +81,7 @@ export default class LoginDialog extends React.Component {
                   </div>
                   <div className="modal-body">
                       <form>
-                        <div class="form-group">
+                        <div className="form-group">
                           <label for="recipient-name" className="control-label">用户名:</label>
                           <input type="text" className="form-control" ref="inputName" />
                         </div>
