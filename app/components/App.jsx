@@ -23,7 +23,7 @@ export default class App extends React.Component {
     }
 
     fetchDate(page=1, limit=30){
-        let url = 'https://leancloud.cn:443/1.1/classes/FeedBack?limit={limit}&skip={skip}&order=-updatedAt&&';
+        let url = 'https://leancloud.cn:443/1.1/classes/FeedBack?limit={limit}&skip={skip}&order=-createdAt&&';
         $.ajax({
             type: "GET",
             url: url.replace('{skip}', (page-1)*limit).replace('{limit}', limit),
