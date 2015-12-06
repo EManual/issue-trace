@@ -99,8 +99,8 @@ export default class App extends React.Component {
             type: "PUT",
             url: url.replace('{objectId}', item.objectId),
             headers: {
-                'X-LC-Id': APP_ID,
-                'X-LC-Key': APP_KEY,
+                'X-LC-Id': config.APP_ID,
+                'X-LC-Key': config.APP_KEY,
                 'X-LC-Session': this.state.sessionToken,
                 'Content-Type': 'application/json'
             },
