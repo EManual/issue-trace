@@ -1,6 +1,6 @@
-'use strict';
-import React from 'react';
-import $ from 'jquery';
+'use strict'
+import React from 'react'
+import $ from 'jquery'
 import LoginDialog from './LoginDialog.jsx'
 import config from './config.js'
 
@@ -33,8 +33,6 @@ export default class App extends React.Component {
             },
             processData: false,
             success: function(data) {
-                console.log(data)
-                console.log(this)
                 this.setState({
                     results: data.results,
                     page: page
@@ -87,8 +85,6 @@ export default class App extends React.Component {
      * @return {[type]}      [description]
      */
     handleSelectChange(item, evt) {
-        console.log(item)
-        console.log(evt.target.value)
 
         let url = 'https://leancloud.cn:443/1.1/classes/FeedBack/{objectId}'
         let data = {
@@ -110,7 +106,7 @@ export default class App extends React.Component {
                 // alert('修改成功!')
             }.bind(this),
             error: function(err, code){
-                console.log(err)
+                alert('操作失败')
             }
         });
 
