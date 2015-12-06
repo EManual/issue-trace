@@ -77,7 +77,6 @@ export default class LoginDialog extends React.Component {
               <div className="modal-dialog">
                 <div className="modal-content">
                   <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 className="modal-title">用户登录</h4>
                   </div>
                   <div className="modal-body">
@@ -89,7 +88,6 @@ export default class LoginDialog extends React.Component {
                         <div className={"form-group " + (this.state.errorMsg!==''?'has-error has-feedback' : '')}>
                           <label className="control-label" >密码:</label>
                           <input type="password" className="form-control" ref="inputPassword"/>
-                          <span className="glyphicon glyphicon-remove form-control-feedback"></span>
                         </div>
                         {errorMsg}
                       </form>
