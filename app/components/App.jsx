@@ -58,9 +58,16 @@ export default class App extends React.Component {
      * @return {[type]} [description]
      */
     clickLogin() {
-        this.setState({
-            showLoginDialog: true
-        })
+        if(this.state.sessionToken !== ''){
+            this.setState({
+                sessionToken: ''
+            })
+        }else{
+            this.setState({
+                showLoginDialog: true
+            })
+        }
+
     }
     /**
      * 登录成功回调
@@ -113,7 +120,7 @@ export default class App extends React.Component {
         return(
             <div className="app-container">
                 <h1>编程助手用户反馈跟踪 <small>v0.1</small></h1>
-                <button className="btn btn-primary" onClick={this.clickLogin.bind(this)}>登陆</button>
+                <button className="btn btn-primary" onClick={this.clickLogin.bind(this)}>{this.state.sessionToken === ''?'登录':'退出'}</button>
                 <table className="table table-bordered table-hover">
                     <thead>
                         <tr>

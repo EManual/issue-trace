@@ -18,7 +18,7 @@ export default class LoginDialog extends React.Component {
     componentWillReceiveProps(nextProps) {
         this.setState({
             show: false || nextProps.show,
-            incorrectPassword: false
+            errorMsg: ''
         })
     }
 
@@ -51,15 +51,15 @@ export default class LoginDialog extends React.Component {
                 }
                 this.clickClose();
                 this.setState({
-                    incorrectPassword: false
+                    errorMsg: ''
                 })
 
             }.bind(this),
             error: function(err_response){
                 console.log(err_response)
-                if(err_response.status && err_response.responseJSON && err_response.responseJSON.code === 211){
+                if(err_response.status && err_response.responseJSON){
                     this.setState({
-                        incorrectPassword: true
+                        errorMsg: err_response.responseJSON.error
                     })
                 }
             }.bind(this)
@@ -67,6 +67,11 @@ export default class LoginDialog extends React.Component {
     }
 
     render() {
+        let errorMsg = ''
+
+        if(this.state.errorMsg !== ''){
+            errorMsg = <div className="alert alert-danger" >{this.state.errorMsg}</div>
+        }
         return (
             <div className="modal fade in" style={{display: this.state.show?"block":"none"}}>
               <div className="modal-dialog">
@@ -81,11 +86,12 @@ export default class LoginDialog extends React.Component {
                           <label for="recipient-name" className="control-label">用户名:</label>
                           <input type="text" className="form-control" ref="inputName" />
                         </div>
-                        <div className={"form-group " + (this.state.incorrectPassword?'has-error has-feedback' : '')}>
+                        <div className={"form-group " + (this.state.errorMsg!==''?'has-error has-feedback' : '')}>
                           <label className="control-label" >密码:</label>
                           <input type="password" className="form-control" ref="inputPassword"/>
                           <span className="glyphicon glyphicon-remove form-control-feedback"></span>
                         </div>
+                        {errorMsg}
                       </form>
                   </div>
                   <div className="modal-footer">
