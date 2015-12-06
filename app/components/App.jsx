@@ -107,7 +107,7 @@ export default class App extends React.Component {
             data: JSON.stringify(data),
             success: function(data) {
                 this.fetchDate(this.state.page)
-                alert('修改成功!')
+                // alert('修改成功!')
             }.bind(this),
             error: function(err, code){
                 console.log(err)
@@ -144,7 +144,7 @@ export default class App extends React.Component {
                             }
                             if( this.state.sessionToken !== '' ){
                                 statusItem = (
-                                    <select className="form-control" onChange={this.handleSelectChange.bind(this, item)}>
+                                    <select className="form-control" onChange={this.handleSelectChange.bind(this, item)} value={item.status}>
                                         <option value="open">open</option>
                                         <option value="close">close</option>
                                         <option value="pedding">pedding</option>
