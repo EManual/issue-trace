@@ -149,14 +149,14 @@ export default class App extends React.Component {
                             }
                             return (
                                 <tr key={item.objectId}>
-                                    <td >{item.type === 'report'
+                                    <td style={{minWidth: '70px'}}>{item.type === 'report'
                                             ? '反馈'
                                             : "建议"}</td>
                                     <td className={statusLabel}>{statusItem}</td>
                                     <td >{item.app_version}</td>
                                     <td >{item.system_version}</td>
                                     <td >{item.model}</td>
-                                    <td alt={item.content}>{item.content.substring(0, 20)}</td>
+                                    <td alt={item.content}>{item.content}</td>
                                 </tr>
                             )
                         }.bind(this))}
