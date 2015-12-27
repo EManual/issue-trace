@@ -152,7 +152,7 @@ export default class App extends React.Component {
                                     <td style={{minWidth: '70px'}}>{item.type === 'report'
                                             ? '反馈'
                                             : "建议"}</td>
-                                    <td className={statusLabel}>{statusItem}</td>
+                                        <td style={{minWidth: '83px'}} className={statusLabel}>{statusItem}</td>
                                     <td >{item.app_version}</td>
                                     <td >{item.system_version}</td>
                                     <td >{item.model}</td>
