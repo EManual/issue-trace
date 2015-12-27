@@ -115,7 +115,7 @@ export default class App extends React.Component {
     render () {
         return(
             <div className="app-container">
-                <h1>编程助手用户反馈跟踪 <small>v0.1</small></h1>
+                <h1>编程助手用户反馈跟踪</h1>
                 <button className="btn btn-primary" onClick={this.clickLogin.bind(this)}>{this.state.sessionToken === ''?'登录':'退出'}</button>
                 <table className="table table-bordered table-hover">
                     <thead>
