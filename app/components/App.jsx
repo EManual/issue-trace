@@ -133,7 +133,8 @@ export default class App extends React.Component {
                         {this.state.results.map(function(item) {
                             let statusItem = item.status;
                             let statusLabel = 'label label-success';
-                            let createdAt = new Date(item.createdAt)
+                            let createdAt = new Date(item.createdAt);
+                            
                             if(item.status === 'close'){
                                 statusLabel = 'label label-danger';
                             }
