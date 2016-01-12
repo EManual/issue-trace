@@ -122,16 +122,18 @@ export default class App extends React.Component {
                         <tr>
                             <th>类型</th>
                             <th>状态</th>
-                            <th>应用版本</th>
-                            <th>系统版本</th>
-                            <th>手机型号</th>
-                            <th>反馈内容</th>
+                            <th>版本</th>
+                            <th>系统</th>
+                            <th>手机</th>
+                            <th>创建于</th>
+                            <th>反馈</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.state.results.map(function(item) {
                             let statusItem = item.status;
                             let statusLabel = 'label label-success';
+                            let createdAt = new Date(item.createdAt)
                             if(item.status === 'close'){
                                 statusLabel = 'label label-danger';
                             }
@@ -156,6 +158,7 @@ export default class App extends React.Component {
                                     <td >{item.app_version}</td>
                                     <td >{item.system_version}</td>
                                     <td >{item.model}</td>
+                                    <td style={{minWidth: '100px'}} >{createdAt.getUTCFullYear()+"-"+(createdAt.getUTCMonth()+1)+"-"+createdAt.getUTCDate()}</td>
                                     <td alt={item.content}>{item.content}</td>
                                 </tr>
                             )
